@@ -2,6 +2,7 @@ package com.bookso.customer.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 //Documentation
 @Schema(name = "ProfileDto", description = "Schema for ProfileDto")
+@Builder
 public class ProfileDto {
 
     @Schema(description = "Customer Id", example = "Database Generated Id")//Documentation

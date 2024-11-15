@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.springframework.http.HttpStatus;
 import java.time.LocalDateTime;
 
@@ -16,7 +17,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 //Documentation
 @Schema(name = "ErrorDto", description = "Schema for Error Dto")
-public class ErrorDto {
+@SuperBuilder
+public class ErrorDto extends BaseResponseDto{
 
     @Schema(description = "HttpStatus Code for the Schema", example = "200")//Documentation
     private HttpStatus code;

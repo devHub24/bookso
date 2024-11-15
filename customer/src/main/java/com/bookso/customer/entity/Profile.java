@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
 import java.time.LocalDate;
 
 /*
@@ -16,6 +18,7 @@ import java.time.LocalDate;
 @Entity
 @Data
 @NoArgsConstructor @AllArgsConstructor
+@SuperBuilder
 public class Profile extends BaseEntity{
 
     @Id

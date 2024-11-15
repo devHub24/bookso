@@ -22,13 +22,13 @@ public class CustomerMapper {
     * return: Customer
     */
     public Customer toCustomer(CustomerDto customerDto){
-        Customer customer = new Customer();
-        customer.setName(customerDto.getName());
-        customer.setEmail(customerDto.getEmail());
-        customer.setContact(customerDto.getContact());
-        customer.setSubscriptionType(customerDto.getSubscriptionType());
 
-        return customer;
+        return Customer.builder()
+                .name(customerDto.getName())
+                .contact(customerDto.getContact())
+                .email(customerDto.getEmail())
+                .subscriptionType(customerDto.getSubscriptionType())
+                .build();
     }
 
     /*
@@ -37,13 +37,13 @@ public class CustomerMapper {
     * returns: CustomerDto
     */
     public static CustomerDto toCustomerDto(Customer customer){
-        CustomerDto customerDto = new CustomerDto();
-        customerDto.setName(customer.getName());
-        customerDto.setEmail(customer.getEmail());
-        customerDto.setContact(customer.getContact());
-        customerDto.setSubscriptionType(customer.getSubscriptionType());
 
-        return customerDto;
+        return CustomerDto.builder()
+                .name(customer.getName())
+                .contact(customer.getContact())
+                .email(customer.getEmail())
+                .subscriptionType(customer.getSubscriptionType())
+                .build();
     }
 
     /*
@@ -52,14 +52,14 @@ public class CustomerMapper {
     * returns: Profile
     */
     public Profile toProfile(ProfileDto profileDto){
-        Profile profile = new Profile();
-        profile.setCustomerId(profileDto.getCustomerId());
-        profile.setSubscriptionType(profile.getSubscriptionType());
-        profile.setSubscriptionDuration(profile.getSubscriptionDuration());
-        profile.setSubscribedOn(profileDto.getSubscribedOn());
-        profile.setValidTill(profileDto.getValidTill());
 
-        return profile;
+        return Profile.builder()
+                .customerId(profileDto.getCustomerId())
+                .subscriptionType(profileDto.getSubscriptionType())
+                .subscriptionDuration(profileDto.getSubscriptionDuration())
+                .subscribedOn(profileDto.getSubscribedOn())
+                .validTill(profileDto.getValidTill())
+                .build();
     }
 
     /*
@@ -68,14 +68,14 @@ public class CustomerMapper {
      * returns: ProfileDto
      */
     public ProfileDto toProfileDto(Profile profile){
-        ProfileDto profileDto = new ProfileDto();
-        profileDto.setCustomerId(profile.getCustomerId());
-        profileDto.setSubscriptionType(profile.getSubscriptionType());
-        profileDto.setSubscriptionDuration(profile.getSubscriptionDuration());
-        profileDto.setSubscribedOn(profile.getSubscribedOn());
-        profileDto.setValidTill(profile.getValidTill());
 
-        return profileDto;
+        return ProfileDto.builder()
+                .customerId(profile.getCustomerId())
+                .subscriptionType(profile.getSubscriptionType())
+                .subscriptionDuration(profile.getSubscriptionDuration())
+                .subscribedOn(profile.getSubscribedOn())
+                .validTill(profile.getValidTill())
+                .build();
     }
 
     /*
@@ -85,12 +85,12 @@ public class CustomerMapper {
     * description: Mapper method to Change NewCustomerDto to Customer
      */
     public Customer newCustomerMapper(NewCustomerDto newCustomerDto){
-        Customer customer = new Customer();
-        customer.setName(newCustomerDto.getName());
-        customer.setEmail(newCustomerDto.getEmail());
-        customer.setContact(newCustomerDto.getContact());
 
-        return customer;
+        return Customer.builder()
+                .name(newCustomerDto.getName())
+                .email(newCustomerDto.getEmail())
+                .contact(newCustomerDto.getContact())
+                .build();
     }
 
 

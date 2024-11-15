@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 //Documentation
 @Schema(name = "CustomerDto", description = "Schema for Customer Dto")
+@Builder
 public class CustomerDto {
 
     @Schema(description = "Name of the Customer", example = "Santhosh")//Documentation

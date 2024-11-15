@@ -34,14 +34,14 @@ public class CustomerController {
     @Operation(summary = "Create Customer API", description = "REST API to create Customer")
     @ApiResponses({
             @ApiResponse(responseCode = CustomerConstants.STATUS_200,
-                    content = @Content(schema = @Schema(implementation = ResponseDto.class))),
+                    content = @Content(schema = @Schema(implementation = BaseResponseDto.class))),
             @ApiResponse(responseCode = "400", content = @Content(schema = @Schema(implementation = ErrorDto.class)))
     })
     @PostMapping("/customers")
-    public ResponseEntity<ResponseDto> createCustomer(@Valid @RequestBody NewCustomerDto newCustomer){
+    public ResponseEntity<BaseResponseDto> createCustomer(@Valid @RequestBody NewCustomerDto newCustomer){
      customerService.createCustomer(newCustomer);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new ResponseDto(CustomerConstants.STATUS_201,CustomerConstants.CUSTOMER_CREATED_SUCCESSFULLY));
+                .body(new BaseResponseDto(CustomerConstants.STATUS_201,CustomerConstants.CUSTOMER_CREATED_SUCCESSFULLY));
     }
 
     //Documentation
@@ -79,29 +79,29 @@ public class CustomerController {
     @Operation(summary = "Update Customer API", description = "REST API to Update Customer")
     @ApiResponses({
             @ApiResponse(responseCode = CustomerConstants.STATUS_200,
-                    content = @Content(schema = @Schema(implementation = ResponseDto.class))),
+                    content = @Content(schema = @Schema(implementation = BaseResponseDto.class))),
             @ApiResponse(responseCode = "400", content = @Content(schema = @Schema(implementation = ErrorDto.class)))
     })
     @PutMapping("customers/{email}")
-    public ResponseEntity<ResponseDto> updateCustomer(@PathVariable ("email") String email,
+    public ResponseEntity<BaseResponseDto> updateCustomer(@PathVariable ("email") String email,
                                                       @Valid @RequestBody CustomerDto customerDto){
         customerService.updateCustomer(email, customerDto);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(new ResponseDto(CustomerConstants.STATUS_200, CustomerConstants.CUSTOMER_UPDATED_SUCCESSFULLY));
+                .body(new BaseResponseDto(CustomerConstants.STATUS_200, CustomerConstants.CUSTOMER_UPDATED_SUCCESSFULLY));
     }
 
     //Documentation
     @Operation(summary = "Delete Customer API", description = "REST API to Delete Customer by Email")
     @ApiResponses({
             @ApiResponse(responseCode = CustomerConstants.STATUS_200,
-                    content = @Content(schema = @Schema(implementation = ResponseDto.class))),
+                    content = @Content(schema = @Schema(implementation = BaseResponseDto.class))),
             @ApiResponse(responseCode = "400", content = @Content(schema = @Schema(implementation = ErrorDto.class)))
     })
     @DeleteMapping("/customers/{email}")
-    public ResponseEntity<ResponseDto> deleteCustomer(@PathVariable ("email") String email){
+    public ResponseEntity<BaseResponseDto> deleteCustomer(@PathVariable ("email") String email){
         customerService.deleteCustomer(email);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(new ResponseDto(CustomerConstants.STATUS_201, CustomerConstants.CUSTOMER_DELETED_SUCCESSFULLY));
+                .body(new BaseResponseDto(CustomerConstants.STATUS_201, CustomerConstants.CUSTOMER_DELETED_SUCCESSFULLY));
     }
 
     //Documentation
@@ -121,15 +121,16 @@ public class CustomerController {
     @Operation(summary = "Update Subscription API", description = "REST API to Update Subscription")
     @ApiResponses({
             @ApiResponse(responseCode = CustomerConstants.STATUS_200,
-                    content = @Content(schema = @Schema(implementation = ResponseDto.class))),
+                    content = @Content(schema = @Schema(implementation = BaseResponseDto.class))),
             @ApiResponse(responseCode = "400", content = @Content(schema = @Schema(implementation = ErrorDto.class)))
     })
     @PutMapping("/customers/{customerId}/{subscriptionType}/{subscriptionDurationType}/profile")
-    public ResponseEntity<ResponseDto> updateSubscription(@PathVariable("customerId") Long customerId,
+    public ResponseEntity<BaseResponseDto> updateSubscription(@PathVariable("customerId") Long customerId,
                                                           @PathVariable("subscriptionType") int subscriptionType,
                                                           @PathVariable("subscriptionDurationType") int subscriptionDurationType){
         customerService.updateSubscription(customerId,subscriptionType,subscriptionDurationType);
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(CustomerConstants.STATUS_200, CustomerConstants.PROFILE_UPDATED_SUCCESSFULLY));
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new BaseResponseDto(CustomerConstants.STATUS_200, CustomerConstants.PROFILE_UPDATED_SUCCESSFULLY));
     }
 
 
